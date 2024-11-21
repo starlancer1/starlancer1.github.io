@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GreatFireVPN Confirmation</title>
+    <script>
+        window.onload = function() {
+            // Try to open the mobile app first
+            window.location.href = 'org.greatfire.fbvpn://login';
+            
+            // After a short delay, redirect to a fallback page if the app didn't open
+            setTimeout(function() {
+                // Check if we're on mobile or desktop
+                if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    // On mobile, maybe redirect to app store
+                    window.location.href = 'https://play.google.com/store/apps/details?id=org.greatfire.fbvpn';
+                } else {
+                    // On desktop, show a friendly message
+                    document.getElementById('message').style.display = 'block';
+                }
+            }, 1000);
+        }
+    </script>
+    <style>
+        .container {
+            text-align: center;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GreatFireVPN Email Confirmation</h1>
+        <div id="message">
+            <p>Email confirmed successfully!</p>
+            <p>Please open this link on your mobile device where GreatFireVPN is installed.</p>
+            <p>You can close this window now.</p>
+        </div>
+    </div>
+</body>
+</html>
